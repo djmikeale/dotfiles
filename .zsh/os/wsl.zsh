@@ -1,0 +1,1 @@
+# WSL behaves like Linux
