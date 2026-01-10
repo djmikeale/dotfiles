@@ -51,6 +51,7 @@ alias la='ls -lathr'
 alias path='echo -e ${PATH//:/\\n}'
 alias qr='pbpaste | qrencode -t ansiutf8'
 
+alias -s md='bat'
 
 # ---------- exports ------------------------------
 
@@ -64,6 +65,10 @@ export VISUAL=code EDITOR=$VISUAL
 
 # source "$CONFIG_DIR"/functions.zsh
 # source "$CONFIG_DIR"/paths.zsh
+
+# ---------- misc ---------------------------------
+# Consider https://youtu.be/3fVAtaGhUyU?si=NSfXY2jLtrAfGGUO&t=851
+# for sqlfmt usage
 
 # ---------- autocomplete -------------------------
 autoload -Uz compinit
