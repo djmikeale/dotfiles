@@ -21,4 +21,5 @@ else
     echo "Traktor Pro needs to be installed via Native Access (not available via Brew)."
     read -s -p "Press Enter to open Native Access website and install manually"
     open "https://www.native-instruments.com/en/specials/native-access/"
+    read -s -p "Import settings manually, from install/configs/traktor as this seems difficult to script. Press Enter when done."
 fi
