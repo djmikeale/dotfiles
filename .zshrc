@@ -31,8 +31,19 @@ zinit wait lucid for \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
 
-# fuzzy finder
-zinit light junegunn/fzf
+# fuzzy finder hack
+if [[ "$(uname -s)" == "Linux" ]]; then
+  # Ubuntu / WSL: install latest fzf via git installer (outdated on apt, issue installing on wsl)
+  if [[ ! -d "$HOME/.fzf" ]]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
+    "$HOME/.fzf/install" --all --no-update-rc
+  fi
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+elif [[ "$(uname -s)" == "Darwin" ]]; then
+  # macOS
+  zinit light junegunn/fzf
+fi
 # ctrl + r to search history
 # ctrl + t to fuzzy find files
 # alt + c to fuzzy cd into dirs
@@ -73,3 +84,6 @@ export VISUAL=code EDITOR=$VISUAL
 # ---------- autocomplete -------------------------
 autoload -Uz compinit
 compinit -C
+
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
